@@ -214,27 +214,32 @@ Each card displays a rank based on the statistic value:
 
 ## Examples 📝
 
-### Try it Now in Your Browser
+### Live Badge Previews
 
-Click any of these links to see the badges live:
+#### 🎨 Theme: Gotham (Default)
+![Gotham Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=gotham)
 
-**Dashboard Mode (Default)**
-- [Linus Torvalds Dashboard](https://github-badge-api.onrender.com/api/trophy?username=torvalds)
-- [Guido van Rossum Dashboard](https://github-badge-api.onrender.com/api/trophy?username=gvanrossum)
-- [Your Username](https://github-badge-api.onrender.com/api/trophy?username=octocat)
+#### 🦇 Theme: Dracula
+![Dracula Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=dracula)
 
-**Different Themes**
-- [Dashboard with Dracula](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=dracula)
-- [Dashboard with Neon](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=neon)
-- [Dashboard with Light](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=light)
+#### ⚡ Theme: Neon
+![Neon Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=neon)
 
-**Achievement Badges Mode**
-- [Badges View](https://github-badge-api.onrender.com/api/trophy?username=torvalds&mode=badges)
-- [Badges with Dracula Theme](https://github-badge-api.onrender.com/api/trophy?username=gvanrossum&mode=badges&theme=dracula)
+#### ☀️ Theme: Light
+![Light Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=light)
 
-**Single Card Mode**
-- [Single Card](https://github-badge-api.onrender.com/api/trophy?username=torvalds&mode=single)
-- [Single Card with Neon](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=single&theme=neon)
+---
+
+### Display Modes
+
+#### Dashboard Mode (Shows all stats with cards)
+![Dashboard Mode](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=dashboard&theme=gotham)
+
+#### Award Badges Mode (Achievement circles)
+![Badges Mode](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=badges&theme=dracula)
+
+#### Single Card Mode (Just one metric)
+![Single Card](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=single&theme=neon)
 
 ---
 
