@@ -33,4 +33,28 @@ function buildSingleSVG(user, theme, dimensions) {
   return { content, width: cardWidth, height: dimensions.cardHeight || 160 };
 }
 
-module.exports = { buildDashboardSVG, buildBadgesSVG, buildSingleSVG };
+function buildTrophyWallSVG(user, stars, theme, dimensions) {
+  const total = user.public_repos + user.followers + stars;
+  const rank = getRank(total);
+  const medalColor = theme[rank.medal];
+  const width = dimensions.cardWidth || 400;
+  const height = dimensions.cardHeight || 300;
+
+  const content = `
+  <g transform="translate(0,0)" filter="url(#dropShadow)">
+    <rect width="${width}" height="${height}" rx="30" fill="url(#cardGradient)" />
+    <g transform="translate(${width/2}, ${height/2 - 20})">
+      ${trophyIcon(medalColor, 120)}
+    </g>
+    <text x="${width/2}" y="${height - 60}" text-anchor="middle" fill="${theme.textPrimary}" font-size="24" font-weight="700">
+      ${user.name || user.login}
+    </text>
+    <text x="${width/2}" y="${height - 30}" text-anchor="middle" fill="${medalColor}" font-size="18" font-weight="600">
+      Rank ${rank.label} · ${total} points
+    </text>
+  </g>
+  `;
+  return { content, width, height };
+}
+
+module.exports = { buildDashboardSVG, buildBadgesSVG, buildSingleSVG, buildTrophyWallSVG };

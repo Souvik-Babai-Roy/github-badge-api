@@ -42,5 +42,49 @@
     "gold": "#ca8a04",
     "silver": "#9ca3af",
     "bronze": "#ea580c"
+  },
+  "nord": {
+    "bg1": "#2e3440",
+    "bg2": "#3b4252",
+    "textPrimary": "#eceff4",
+    "textSecondary": "#81a1c1",
+    "accent1": "#88c0d0",
+    "accent2": "#b48ead",
+    "gold": "#ebcb8b",
+    "silver": "#d8dee9",
+    "bronze": "#bf616a"
+  },
+  "solarized": {
+    "bg1": "#002b36",
+    "bg2": "#073642",
+    "textPrimary": "#839496",
+    "textSecondary": "#586e75",
+    "accent1": "#268bd2",
+    "accent2": "#2aa198",
+    "gold": "#b58900",
+    "silver": "#657b83",
+    "bronze": "#cb4b16"
+  },
+  "monokai": {
+    "bg1": "#272822",
+    "bg2": "#3e3d32",
+    "textPrimary": "#f8f8f2",
+    "textSecondary": "#75715e",
+    "accent1": "#a6e22e",
+    "accent2": "#66d9ef",
+    "gold": "#e6db74",
+    "silver": "#ae81ff",
+    "bronze": "#f92672"
+  },
+  "github-dark": {
+    "bg1": "#0d1117",
+    "bg2": "#161b22",
+    "textPrimary": "#c9d1d9",
+    "textSecondary": "#8b949e",
+    "accent1": "#58a6ff",
+    "accent2": "#1f6feb",
+    "gold": "#f1e05a",
+    "silver": "#c9d1d9",
+    "bronze": "#bc8c5c"
   }
 }

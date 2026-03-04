@@ -64,13 +64,16 @@ app.get('/api/trophy', async (req, res, next) => {
 
     // SVG template with gradients and optional shimmer
     const shimmer = req.query.shimmer !== 'false'; // enabled by default
-    const svg = `
+const svg = `
 <svg width="${layout.width}" height="${layout.height}" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="cardGradient" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${theme.bg1}"/>
       <stop offset="100%" stop-color="${theme.bg2}"/>
     </linearGradient>
+    <filter id="dropShadow" x="-0.02" y="-0.02" width="1.04" height="1.04">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
     ${shimmer ? `
     <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.0">
@@ -85,7 +88,7 @@ app.get('/api/trophy', async (req, res, next) => {
 
   ${shimmer ? `<rect width="${layout.width}" height="${layout.height}" fill="url(#shimmer)" />` : ''}
 </svg>
-    `;
+`;
 
     res.setHeader('Content-Type', 'image/svg+xml');
     res.setHeader('Cache-Control', `public, max-age=${config.cache.ttl}`);
