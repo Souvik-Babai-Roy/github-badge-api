@@ -28,8 +28,39 @@ A production-ready GitHub Badge API that generates stunning, dynamic SVG badges 
 - 🚀 **Production Ready**: Hosted on Render, zero setup needed
 - 🎯 **Easy Integration**: Single URL for markdown or HTML
 - 📱 **Responsive Design**: Works perfectly on all devices
+- 🏗️ **Modular Architecture**: Clean, maintainable code structure
+- ✨ **Enhanced Styling**: Gradients, shadows, and smooth animations
+- 🎖️ **Medal Badges**: Visual rank indicators with medal colors
 
 ---
+
+---
+
+## Project Architecture 🏗️
+
+The application now features a clean, modular architecture for better maintainability and scalability:
+
+```
+src/
+├── builders/          # SVG component builders
+│   └── card.js       # Card and trophy icon generation
+├── config/           # Configuration files
+├── middleware/       # Express middleware
+├── services/         # GitHub API services
+├── themes/           # Theme definitions
+├── utils/            # Utility functions (ranking, etc.)
+└── app.js            # Express application setup
+
+server.js             # Entry point
+package.json          # Dependencies
+```
+
+**Key Components:**
+- **Card Builder**: Enhanced card rendering with gradients, shadows, and improved styling
+- **Trophy Icon**: Scalable icon system with customizable sizes
+- **Theme System**: Centralized theme management
+- **Services**: GitHub API integration layer
+- **Utilities**: Ranking and helper functions
 
 ## Quick Start 🚀
 
@@ -197,6 +228,34 @@ Light theme with dark text. Perfect for light backgrounds.
 ```
 http://localhost:3000/api/trophy?username=octocat&theme=light
 ```
+
+---
+
+---
+
+## Recent Improvements ✨
+
+### v2.0 - Major Refactor & Enhancement
+
+**Code Quality:**
+- ✅ Modular architecture with separated concerns
+- ✅ Better code organization in dedicated folders
+- ✅ Improved JSDoc documentation
+- ✅ Maintainable and scalable structure
+
+**Visual Enhancements:**
+- ✅ Enhanced card styling with gradients and borders
+- ✅ Drop shadow effects for depth
+- ✅ Improved typography and font weights
+- ✅ Better medal badge visualization
+- ✅ Scalable trophy icon system
+- ✅ Smoother animations and transitions
+
+**Performance:**
+- ✅ Optimized SVG rendering
+- ✅ Better caching strategy
+- ✅ Reduced API calls
+- ✅ Faster response times
 
 ---
 
@@ -389,13 +448,15 @@ Make sure you're passing the `username` query parameter in your URL.
 
 ---
 
-## Customization 🛠️
+## Customization & Extension 🛠️
 
-To add new themes, edit the `themes` object in `server.js`:
+### Adding New Themes
+
+Edit `src/themes/index.js` to add your custom theme:
 
 ```javascript
 const themes = {
-  yourtheme: {
+  mytheme: {
     bg1: "#color1",
     bg2: "#color2",
     textPrimary: "#color3",
@@ -409,7 +470,24 @@ const themes = {
 };
 ```
 
-Then use it: `http://localhost:3000/api/trophy?username=yourname&theme=yourtheme`
+Then use it: `https://github-badge-api.onrender.com/api/trophy?username=yourname&theme=mytheme`
+
+### Creating Custom Card Designs
+
+Modify `src/builders/card.js` to customize:
+- Card dimensions
+- Typography styles
+- Gradient effects
+- Border styling
+- Icon sizing
+
+### Building New Features
+
+The modular structure makes it easy to add:
+1. **New Badge Types**: Create builders in `src/builders/`
+2. **New Display Modes**: Add handlers in `src/services/`
+3. **New Themes**: Add to `src/themes/`
+4. **New API Endpoints**: Define in `src/routes/` (when created)
 
 ---
 
