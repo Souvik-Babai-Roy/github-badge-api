@@ -217,29 +217,29 @@ Each card displays a rank based on the statistic value:
 ### Live Badge Previews
 
 #### 🎨 Theme: Gotham (Default)
-![Gotham Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=gotham)
+![Gotham Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=gotham)
 
 #### 🦇 Theme: Dracula
-![Dracula Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=dracula)
+![Dracula Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=dracula)
 
 #### ⚡ Theme: Neon
-![Neon Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=neon)
+![Neon Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=neon)
 
 #### ☀️ Theme: Light
-![Light Theme](https://github-badge-api.onrender.com/api/trophy?username=torvalds&theme=light)
+![Light Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=light)
 
 ---
 
 ### Display Modes
 
 #### Dashboard Mode (Shows all stats with cards)
-![Dashboard Mode](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=dashboard&theme=gotham)
+![Dashboard Mode](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=dashboard&theme=gotham)
 
 #### Award Badges Mode (Achievement circles)
-![Badges Mode](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=badges&theme=dracula)
+![Badges Mode](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=badges&theme=dracula)
 
 #### Single Card Mode (Just one metric)
-![Single Card](https://github-badge-api.onrender.com/api/trophy?username=octocat&mode=single&theme=neon)
+![Single Card](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=single&theme=neon)
 
 ---
 
