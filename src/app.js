@@ -6,9 +6,15 @@ const config = require('./config');
 const logger = require('./utils/logger');
 const github = require('./services/github');
 const { getTheme } = require('./themes');
-const { buildDashboardSVG, buildBadgesSVG, buildSingleSVG } = require('./builders/layout');
 const rateLimiter = require('./middleware/rateLimiter');
 const errorHandler = require('./middleware/errorHandler');
+
+// Professional systems
+const validators = require('./systems/validators');
+const filterSystem = require('./systems/filters');
+const presets = require('./systems/presets');
+const trophyBuilder = require('./builders/advanced-trophy-builder');
+const animationSystem = require('./systems/animations');
 
 const app = express();
 
@@ -19,74 +25,187 @@ app.use(compression());
 app.use(rateLimiter);
 
 // Health check
-app.get('/health', (req, res) => res.send('OK'));
+app.get('/health', (req, res) => res.json({ status: 'OK' }));
 
-// Main endpoint
+// API Documentation endpoint
+app.get('/api/docs', (req, res) => {
+  res.json({
+    name: 'GitHub Trophy Badge API v2.0',
+    description: 'Professional GitHub trophy badge generator with advanced filtering and customization',
+    version: '2.0.0',
+    endpoints: {
+      '/api/trophy': {
+        description: 'Generate custom trophy badges',
+        method: 'GET',
+        parameters: {
+          username: 'GitHub username (required)',
+          theme: 'Color theme (default: gotham)',
+          preset: 'Configuration preset (minimalist, balanced, comprehensive, professional, expert, etc.)',
+          mode: 'Display mode (dashboard, showcase, wall, single, cards, badges)',
+          medals: 'Filter by medals (gold, silver, bronze, platinum) - comma separated',
+          tiers: 'Filter by tiers - comma separated',
+          categories: 'Filter by categories - comma separated',
+          trophies: 'Specific trophy IDs to display - comma separated',
+          animation: 'Animation type (none, shimmer, pulse, glow, wave, bounce, float, rotate, rainbow)',
+          layout: 'Layout style (grid, row, column, compact, expanded)',
+          sortBy: 'Sort trophies (name, category, threshold)',
+          sortDesc: 'Sort descending (true/false)',
+          showStats: 'Show statistics (true/false)',
+          showRanks: 'Show rank information (true/false)',
+          showIcons: 'Show icons (true/false)',
+          cardWidth: 'Card width in pixels (50-2000)',
+          cardHeight: 'Card height in pixels (50-2000)',
+          spacing: 'Spacing between items (50-2000)',
+        },
+      },
+      '/api/presets': 'List available presets',
+      '/api/validation': 'Get validation information',
+      '/api/docs': 'This documentation',
+    },
+  });
+});
+
+// Validation/Info endpoints
+app.get('/api/validation', (req, res) => {
+  res.json(validators.getValidationInfo());
+});
+
+app.get('/api/presets', (req, res) => {
+  res.json({
+    presets: presets.listPresets(),
+    description: 'Use preset parameter in /api/trophy endpoint',
+  });
+});
+
+// Main trophy badge endpoint
 app.get('/api/trophy', async (req, res, next) => {
   try {
-    const { username, theme: themeName = 'gotham', mode = 'dashboard' } = req.query;
-
-    if (!username) {
-      const error = new Error('Missing username parameter');
+    // Validate parameters
+    const validation = validators.validateQueryParams(req.query);
+    if (!validation.valid) {
+      const error = new Error(`Validation error: ${validation.errors.join(', ')}`);
       error.status = 400;
       throw error;
     }
 
-    // Fetch data
+    const params = validation.params;
+    logger.debug(`Trophy request: username=${params.username}, preset=${params.preset}`);
+
+    // Fetch GitHub data
     const [user, stars] = await Promise.all([
-      github.getUser(username),
-      github.getTotalStars(username),
+      github.getUser(params.username),
+      github.getTotalStars(params.username),
     ]);
 
-    const theme = getTheme(themeName);
+    // Prepare user statistics
+    const userStats = {
+      repos: user.public_repos,
+      followers: user.followers,
+      stars: stars,
+      contributions: user.public_repos + user.followers, // Placeholder
+      languages: [], // Can be enhanced with GitHub API
+    };
+
+    // Get theme
+    const theme = getTheme(params.theme);
+
+    // Apply preset if specified
+    let finalConfig = params.preset
+      ? presets.applyPreset(params.preset, params)
+      : params;
+
+    // Earn trophies based on user stats
+    const earnedTrophies = filterSystem.earnTrophies(userStats);
+
+    // Apply filters
+    const filteredTrophies = filterSystem.filterTrophies({
+      categories: finalConfig.categories,
+      medals: finalConfig.medals,
+      tiers: finalConfig.tiers,
+      ids: finalConfig.trophies,
+    }).map(trophy => {
+      const earned = earnedTrophies.find(e => e.id === trophy.id);
+      return earned;
+    }).filter(Boolean); // Remove undefined
+
+    // Sort trophies
+    const sortedTrophies = filterSystem.sortTrophies(
+      filteredTrophies,
+      finalConfig.sortBy,
+      finalConfig.sortDesc
+    );
 
     // Build layout based on mode
     let layout;
-    const dimensions = {
-      cardWidth: parseInt(req.query.cardWidth, 10) || 280,
-      cardHeight: parseInt(req.query.cardHeight, 10) || 160,
-      badgeWidth: parseInt(req.query.badgeWidth, 10) || 120,
-      badgeHeight: parseInt(req.query.badgeHeight, 10) || 120,
-      spacing: parseInt(req.query.spacing, 10) || 20,
-    };
+    const mode = finalConfig.mode || 'dashboard';
 
     switch (mode) {
-      case 'badges':
-        layout = buildBadgesSVG(user, stars, theme, dimensions);
-        break;
-      case 'single':
-        layout = buildSingleSVG(user, theme, dimensions);
+      case 'wall':
+      case 'showcase':
+        layout = trophyBuilder.buildWall(userStats, sortedTrophies, {
+          theme,
+          animation: finalConfig.animation,
+          spacing: finalConfig.spacing,
+        });
         break;
       case 'dashboard':
+      case 'cards':
       default:
-        layout = buildDashboardSVG(user, stars, theme, dimensions);
+        layout = trophyBuilder.buildDashboard(userStats, sortedTrophies, {
+          theme,
+          layout: finalConfig.layout,
+          columns: finalConfig.layout === 'grid' ? 3 : 1,
+          cardWidth: finalConfig.cardWidth,
+          cardHeight: finalConfig.cardHeight,
+          spacing: finalConfig.spacing,
+          animation: finalConfig.animation,
+          showStats: finalConfig.showStats,
+        });
     }
 
-    // SVG template with gradients and optional shimmer
-    const shimmer = req.query.shimmer !== 'false'; // enabled by default
-const svg = `
-<svg width="${layout.width}" height="${layout.height}" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+    // Build final SVG
+    const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  width="${layout.width}" 
+  height="${layout.height}" 
+  xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  font-family="'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+>
   <defs>
-    <linearGradient id="cardGradient" x1="0" y1="0" x2="1" y2="1">
+    <style>
+      @keyframes shimmer-anim {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      @keyframes pulse-anim {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      @keyframes bounce-anim {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      @keyframes float-anim {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes rotate-anim {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${theme.bg1}"/>
       <stop offset="100%" stop-color="${theme.bg2}"/>
     </linearGradient>
-    <filter id="dropShadow" x="-0.02" y="-0.02" width="1.04" height="1.04">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.3"/>
-    </filter>
-    ${shimmer ? `
-    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.0">
-        <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0"/>
-    </linearGradient>` : ''}
   </defs>
 
-  ${layout.content}
+  <!-- Background -->
+  <rect width="${layout.width}" height="${layout.height}" fill="url(#bgGradient)"/>
 
-  ${shimmer ? `<rect width="${layout.width}" height="${layout.height}" fill="url(#shimmer)" />` : ''}
+  <!-- Trophy content -->
+  ${layout.content}
 </svg>
 `;
 
@@ -94,14 +213,13 @@ const svg = `
     res.setHeader('Cache-Control', `public, max-age=${config.cache.ttl}`);
     res.send(svg);
   } catch (error) {
-    // Pass to global error handler
     next(error);
   }
 });
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).send('Not found');
+  res.status(404).json({ error: 'Endpoint not found' });
 });
 
 // Global error handler
