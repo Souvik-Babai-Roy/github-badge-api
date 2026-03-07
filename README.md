@@ -155,12 +155,12 @@ Shows a dashboard with 3 cards: Repositories, Followers, and Total Stars
 
 **URL:**
 ```
-http://localhost:3000/api/trophy?username=your-github-username
+https://github-badge-api.onrender.com/api/trophy?username=your-github-username
 ```
 
 **Markdown:**
 ```markdown
-![GitHub Badge](http://localhost:3000/api/trophy?username=your-github-username)
+![GitHub Badge](https://github-badge-api.onrender.com/api/trophy?username=your-github-username)
 ```
 
 ---
@@ -170,12 +170,12 @@ Displays achievement badges (circular) for various milestones
 
 **URL:**
 ```
-http://localhost:3000/api/trophy?username=your-github-username&mode=badges
+https://github-badge-api.onrender.com/api/trophy?username=your-github-username&mode=badges
 ```
 
 **Markdown:**
 ```markdown
-![GitHub Badges](http://localhost:3000/api/trophy?username=your-github-username&mode=badges)
+![GitHub Badges](https://github-badge-api.onrender.com/api/trophy?username=your-github-username&mode=badges)
 ```
 
 **Achievement Badges:**
@@ -190,12 +190,12 @@ Shows only a single card displaying repositories count
 
 **URL:**
 ```
-http://localhost:3000/api/trophy?username=your-github-username&mode=single
+https://github-badge-api.onrender.com/api/trophy?username=your-github-username&mode=single
 ```
 
 **Markdown:**
 ```markdown
-![GitHub Single Card](http://localhost:3000/api/trophy?username=your-github-username&mode=single)
+![GitHub Single Card](https://github-badge-api.onrender.com/api/trophy?username=your-github-username&mode=single)
 ```
 
 ---
@@ -450,8 +450,8 @@ Make sure you're passing the `username` query parameter in your URL.
 
 ### Badge not showing in Markdown
 1. Test the URL directly in your browser
-2. Make sure your server is running if using localhost
-3. Use a public URL if deploying (not localhost)
+2. Make sure the API server is running and accessible
+3. Use the public Render URL for production deployment
 
 ### Token Issues
 - Regenerate your GitHub token from [Personal Access Tokens](https://github.com/settings/tokens)
