@@ -19,18 +19,19 @@ A production-ready GitHub Badge API that generates stunning, dynamic SVG badges 
 
 ## Features ✨
 
-- 🎨 **4 Premium Themes**: Gotham, Dracula, Neon, and Light
-- 📊 **Multiple Display Modes**: Dashboard, Achievement Badges, and Single Card
+- 🎨 **10+ Premium Themes**: Gotham, Dracula, Neon, Light, Nord, Solarized, Monokai, GitHub Dark, Cyberpunk, Gruvbox, Tokyo Night
+- 📊 **Multiple Display Modes**: Dashboard, Achievement Badges, Single Card, and Trophy Wall
 - ⚡ **Real-time Data**: Live GitHub statistics via GitHub API
-- 🏅 **Smart Ranking System**: Automatic rank assignment based on stats
-- 🪶 **Lightweight SVG**: Crisp, scalable badges at any resolution
+- 🏅 **Smart Ranking System**: Automatic rank assignment (S, A, B) based on performance
+- 🪶 **Professional SVG Design**: Crisp, scalable graphics at any resolution
+- ✨ **Modern Styling**: Glassmorphism effects, gradients, shadows, and animations
 - ⏱️ **Smart Caching**: 1-hour cache to minimize API calls
-- 🚀 **Production Ready**: Hosted on Render, zero setup needed
+- 🚀 **Production Ready**: Enterprise-grade hosted on Render
 - 🎯 **Easy Integration**: Single URL for markdown or HTML
 - 📱 **Responsive Design**: Works perfectly on all devices
-- 🏗️ **Modular Architecture**: Clean, maintainable code structure
-- ✨ **Enhanced Styling**: Gradients, shadows, and smooth animations
-- 🎖️ **Medal Badges**: Visual rank indicators with medal colors
+- 🏗️ **Modular Architecture**: Clean, maintainable, extensible code
+- 🎖️ **Medal Badges**: Visual rank indicators with achievement tracking
+- 💎 **Premium UI Elements**: Drop shadows, accent borders, decorative elements
 
 ---
 
@@ -201,41 +202,59 @@ http://localhost:3000/api/trophy?username=your-github-username&mode=single
 
 ## Available Themes 🎭
 
-### 1. Gotham (Default)
-Dark blue theme with cyan accents. Perfect for a modern look.
+The API now includes **11 premium themes**:
 
-```
-http://localhost:3000/api/trophy?username=octocat&theme=gotham
-```
+| Theme | Style | Use Case |
+|-------|-------|----------|
+| **Gotham** | Modern Blue | Professional & Modern |
+| **Dracula** | Purple Dark | Developer Friendly |
+| **Neon** | Fluorescent | Stand Out & Bold |
+| **Light** | Clean White | Professional Docs |
+| **Nord** | Arctic Blue | Calm & Cool |
+| **Solarized** | Precision | Classic Developer |
+| **Monokai** | Vibrant Dark | Retro Vibes |
+| **GitHub Dark** | GH Native | GitHub Users |
+| **Cyberpunk** | Futuristic | Bold & Modern |
+| **Gruvbox** | Warm Retro | Comfortable |
+| **Tokyo Night** | Japanese | Stylish & Modern |
 
-### 2. Dracula
-Purple-toned dark theme. Great for a sleek appearance.
-
+**Usage:**
 ```
-http://localhost:3000/api/trophy?username=octocat&theme=dracula
-```
-
-### 3. Neon
-High-contrast neon theme with vibrant colors on black.
-
-```
-http://localhost:3000/api/trophy?username=octocat&theme=neon
-```
-
-### 4. Light
-Light theme with dark text. Perfect for light backgrounds.
-
-```
-http://localhost:3000/api/trophy?username=octocat&theme=light
+https://github-badge-api.onrender.com/api/trophy?username=your-username&theme=theme-name
 ```
 
 ---
 
 ---
 
-## Recent Improvements ✨
+## Recent Major Updates 🚀
 
-### v2.0 - Major Refactor & Enhancement
+### v3.0 - Professional Grade Design Overhaul
+
+**Visual Redesign:**
+- ✨ **Glassmorphism Effects**: Modern frosted glass card styling
+- 🎨 **Enhanced Typography**: Professional font hierarchy and spacing  
+- 🌈 **Gradient Backgrounds**: Multi-layered gradient system for depth
+- 🎭 **10+ Premium Themes**: New cohesive theme collection (Cyberpunk, Gruvbox, Tokyo Night, etc.)
+- 💎 **Professional Shadows**: Multi-layered drop shadows for 3D depth
+- 🏅 **Improved Badges**: Better achievement indicators with checkmarks/locks
+- 🎖️ **Enhanced Trophy Icon**: Redesigned with better proportions and shine effects
+
+**Code Architecture:**
+- ✅ **Professional Components**: Modular builders for cards, badges, and layouts
+- ✅ **Better Separation**: Config, themes, services in dedicated modules
+- ✅ **Extended Dimensions**: Customizable card and badge sizing
+- ✅ **Trophy Wall Mode**: New premium showcase layout
+- ✅ **Theme System**: Centralized theme management with 11 themes
+
+**UX Improvements:**
+- 🎯 Visual rank indicators with medal colors
+- 📊 Better spacing and layout calculations  
+- 🔄 Improved trophy icon scaling system
+- ✨ Subtle decorative elements for polish
+- 🎨 Professional accent bars and borders
+
+### v2.0 - Initial Professional Refactor
 
 **Code Quality:**
 - ✅ Modular architecture with separated concerns
@@ -243,17 +262,9 @@ http://localhost:3000/api/trophy?username=octocat&theme=light
 - ✅ Improved JSDoc documentation
 - ✅ Maintainable and scalable structure
 
-**Visual Enhancements:**
-- ✅ Enhanced card styling with gradients and borders
-- ✅ Drop shadow effects for depth
-- ✅ Improved typography and font weights
-- ✅ Better medal badge visualization
-- ✅ Scalable trophy icon system
-- ✅ Smoother animations and transitions
-
 **Performance:**
 - ✅ Optimized SVG rendering
-- ✅ Better caching strategy
+- ✅ Better caching strategy  
 - ✅ Reduced API calls
 - ✅ Faster response times
 
@@ -273,31 +284,40 @@ Each card displays a rank based on the statistic value:
 
 ## Examples 📝
 
-### Live Badge Previews
+### 🎨 All Themes Showcase
 
-#### 🎨 Theme: Gotham (Default)
+#### Gotham (Default - Professional Blue)
 ![Gotham Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=gotham)
 
-#### 🦇 Theme: Dracula
+#### Dracula (Dark Purple)
 ![Dracula Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=dracula)
 
-#### ⚡ Theme: Neon
+#### Neon (Vibrant Futuristic)
 ![Neon Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=neon)
 
-#### ☀️ Theme: Light
+#### Light (Clean Professional)
 ![Light Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=light)
+
+#### Nord (Arctic Blue)
+![Nord Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=nord)
+
+#### Monokai (Vibrant Dark)
+![Monokai Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=monokai)
+
+#### Cyberpunk (Futuristic Neon)
+![Cyberpunk Theme](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&theme=cyberpunk)
 
 ---
 
-### Display Modes
+### 📊 Display Modes
 
-#### Dashboard Mode (Shows all stats with cards)
+#### Dashboard Mode (All Stats)
 ![Dashboard Mode](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=dashboard&theme=gotham)
 
-#### Award Badges Mode (Achievement circles)
+#### Achievement Badges (Circular Medals)
 ![Badges Mode](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=badges&theme=dracula)
 
-#### Single Card Mode (Just one metric)
+#### Single Card (Repositories)
 ![Single Card](https://github-badge-api.onrender.com/api/trophy?username=Souvik-Babai-Roy&mode=single&theme=neon)
 
 ---

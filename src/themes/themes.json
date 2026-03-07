@@ -3,78 +3,85 @@
     "bg1": "#0f172a",
     "bg2": "#1e293b",
     "textPrimary": "#ffffff",
-    "textSecondary": "#94a3b8",
+    "textSecondary": "#cbd5e1",
     "accent1": "#3b82f6",
     "accent2": "#06b6d4",
-    "gold": "#facc15",
-    "silver": "#cbd5e1",
-    "bronze": "#f97316"
+    "gold": "#fbbf24",
+    "silver": "#e2e8f0",
+    "bronze": "#f97316",
+    "name": "Gotham"
   },
   "dracula": {
     "bg1": "#282a36",
     "bg2": "#44475a",
     "textPrimary": "#f8f8f2",
-    "textSecondary": "#bd93f9",
+    "textSecondary": "#a6acaf",
     "accent1": "#ff79c6",
     "accent2": "#8be9fd",
     "gold": "#ffb86c",
-    "silver": "#f8f8f2",
-    "bronze": "#ff5555"
+    "silver": "#f1fa8c",
+    "bronze": "#ff5555",
+    "name": "Dracula"
   },
   "neon": {
     "bg1": "#000000",
-    "bg2": "#111111",
+    "bg2": "#0a0a0a",
     "textPrimary": "#ffffff",
     "textSecondary": "#00ffff",
     "accent1": "#00ffcc",
     "accent2": "#00ffff",
     "gold": "#39ff14",
-    "silver": "#00ffff",
-    "bronze": "#ff00ff"
+    "silver": "#ff10f0",
+    "bronze": "#ff00ff",
+    "name": "Neon"
   },
   "light": {
-    "bg1": "#f3f4f6",
-    "bg2": "#e5e7eb",
-    "textPrimary": "#111827",
-    "textSecondary": "#6b7280",
+    "bg1": "#f8fafc",
+    "bg2": "#f1f5f9",
+    "textPrimary": "#0f172a",
+    "textSecondary": "#475569",
     "accent1": "#2563eb",
     "accent2": "#0891b2",
-    "gold": "#ca8a04",
+    "gold": "#f59e0b",
     "silver": "#9ca3af",
-    "bronze": "#ea580c"
+    "bronze": "#ea580c",
+    "name": "Light"
   },
   "nord": {
     "bg1": "#2e3440",
     "bg2": "#3b4252",
     "textPrimary": "#eceff4",
-    "textSecondary": "#81a1c1",
+    "textSecondary": "#d8dee9",
     "accent1": "#88c0d0",
-    "accent2": "#b48ead",
+    "accent2": "#81a1c1",
     "gold": "#ebcb8b",
-    "silver": "#d8dee9",
-    "bronze": "#bf616a"
+    "silver": "#a3be8c",
+    "bronze": "#b48ead",
+    "name": "Nord"
   },
   "solarized": {
     "bg1": "#002b36",
     "bg2": "#073642",
-    "textPrimary": "#839496",
-    "textSecondary": "#586e75",
+    "textPrimary": "#fdf6e3",
+    "textSecondary": "#839496",
     "accent1": "#268bd2",
     "accent2": "#2aa198",
     "gold": "#b58900",
-    "silver": "#657b83",
-    "bronze": "#cb4b16"
+    "silver": "#a1efe4",
+    "bronze": "#cb4b16",
+    "name": "Solarized"
   },
   "monokai": {
     "bg1": "#272822",
     "bg2": "#3e3d32",
     "textPrimary": "#f8f8f2",
-    "textSecondary": "#75715e",
+    "textSecondary": "#f92672",
     "accent1": "#a6e22e",
     "accent2": "#66d9ef",
     "gold": "#e6db74",
     "silver": "#ae81ff",
-    "bronze": "#f92672"
+    "bronze": "#f92672",
+    "name": "Monokai"
   },
   "github-dark": {
     "bg1": "#0d1117",
@@ -83,8 +90,45 @@
     "textSecondary": "#8b949e",
     "accent1": "#58a6ff",
     "accent2": "#1f6feb",
-    "gold": "#f1e05a",
+    "gold": "#d4af37",
     "silver": "#c9d1d9",
-    "bronze": "#bc8c5c"
+    "bronze": "#e9a029",
+    "name": "GitHub Dark"
+  },
+  "cyberpunk": {
+    "bg1": "#0a0e27",
+    "bg2": "#16213e",
+    "textPrimary": "#00d9ff",
+    "textSecondary": "#7f00ff",
+    "accent1": "#ff006e",
+    "accent2": "#ffbe0b",
+    "gold": "#ffbe0b",
+    "silver": "#00d9ff",
+    "bronze": "#ff006e",
+    "name": "Cyberpunk"
+  },
+  "gruvbox": {
+    "bg1": "#282828",
+    "bg2": "#3c3836",
+    "textPrimary": "#ebdbb2",
+    "textSecondary": "#928374",
+    "accent1": "#83a598",
+    "accent2": "#d3869b",
+    "gold": "#d4af37",
+    "silver": "#a89984",
+    "bronze": "#b8860b",
+    "name": "Gruvbox"
+  },
+  "tokyonight": {
+    "bg1": "#1a1b26",
+    "bg2": "#292e42",
+    "textPrimary": "#c0caf5",
+    "textSecondary": "#787c8f",
+    "accent1": "#7aa2f7",
+    "accent2": "#9ece6a",
+    "gold": "#e0af68",
+    "silver": "#bb9af7",
+    "bronze": "#ff7a8d",
+    "name": "Tokyo Night"
   }
 }
